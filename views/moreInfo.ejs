@@ -1,0 +1,33 @@
+<% include partials/header.ejs %>
+
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-md-3">
+            <img src="https://via.placeholder.com/200" alt="temp image">
+            <div class="caption-full text-center">
+                <h4>User Name</h4>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <img class="img-thumbnail" src="<%=fashions.image%>" alt="">
+            <div class="caption-full">
+                <h4><%=fashions.name%></h4>
+                <p><%=fashions.description%></p>
+                <a href="/index/<%=fashions._id%>/edit" class="btn btn-warning">Edit</a>
+
+                <form style="display: inline" action="/index/<%=fashions._id%>?_method=DELETE" method="POST">
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        
+    </div>
+</div>
+
+
+
+
+
+<% include partials/footer.ejs %>

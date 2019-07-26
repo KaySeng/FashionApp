@@ -1,0 +1,26 @@
+<% include partials/header %>
+
+<div class="container pt-3">
+	<div class="jumbotron mb-3">
+	<h1 class="display-4">Welcome to Facionitors</h1>
+	<p class="lead">In this page the login can create new post and anyone can view the below posts</p>
+	<a class="btn btn-primary btn-lg mt-3" href="/new" role="button">Create a new post</a>
+  </div>
+
+<div class="row text-center" style="display:flex; flex-wrap: wrap;">
+        <% Fashions.forEach(function(fashion){ %>
+            <div class="col-md-3 col-sm-6">
+                   <img  class="img-thumbnail" src="<%= fashion.image %>">
+                   <div class="caption">
+                       <h4><%= fashion.name %></h4>
+                   </div>
+                   <p>
+                       <a href="/index/<%=fashion._id%>" class="btn btn-primary">More Info</a>
+                   </p>
+
+            </div>
+        <% }); %>
+</div>
+</div>
+
+<% include partials/footer %>
