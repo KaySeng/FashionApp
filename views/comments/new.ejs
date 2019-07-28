@@ -2,18 +2,14 @@
 <div class="container mt-3">
     <div class="row">
         <div style="width: 30%; margin: 25px auto">
-        <form method="POST" action="/index"> 
+        <form method="POST" action="/index/<%=fashion._id%>/comments"> 
             <div class="form-group">
-                <label for="inputPostName">Post Name:</label>
-                <input type="text" class="form-control" id="inputPostName" placeholder="Enter email" name="name">
-            </div>
-            <div class="form-group">
-                <label for="inputImageUrl">Image Url:</label>
-                <input type="text" class="form-control" id="inputImageUrl" placeholder="www.images.com" name="image">
+                <label for="inputPostName">Username:</label>
+                <input type="text" class="form-control" id="inputPostName" placeholder="username" name="comment[username]">
             </div>
             <div class="form-group">
                 <label for="inputDescription">Description:</label>
-                <input class="form-control" type="text" id="inputDescription" placeholder="Some random texts...." name="description">
+                <input class="form-control" type="text" id="inputDescription" placeholder="Some random texts...." name="comment[text]">
             </div>
             <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block">Submit</button>

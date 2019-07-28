@@ -56,7 +56,7 @@ app.post("/index", (req, res) => {
 
 // showing more information about post
 app.get("/index/:id", (req, res) => {
-	Fashion.findById(req.params.id, (err, foundPost) =>{
+	Fashion.findById(req.params.id).populate("comments").exec((err, foundPost) =>{
 		if(err){
 			console.log("hello");
 		} else {
@@ -101,11 +101,11 @@ app.delete("/index/:id", (req, res) => {
 
 // Creating a new comment section
 app.get("/index/:id/comments/new", (req, res) => {
-	Fashion.findById(req.params.id, (err, comment) => {
+	Fashion.findById(req.params.id, (err, fashion) => {
 		if(err){
 			console.log(err);
 		} else {
-			res.render("comments/new", {comment: comment});
+			res.render("comments/new", {fashion: fashion});
 		}
 	});
 });
@@ -116,12 +116,18 @@ app.post("/index/:id/comments", (req, res) =>{
 		if (err) {
 			console.log(err);
 		} else {
-			
+			Comment.create(req.body.comment, (err, comment) => {
+				if (err){
+					console.log(err);
+				} else {
+					fashion.comments.push(comment);
+					fashion.save();
+					res.redirect('/index/' + fashion._id);
+				}
+			});
 		}
 	});
 });
-
-
 
 app.listen(port, hostname, () => {
 	console.log(`Server running at http://${hostname}:${port}/`);
