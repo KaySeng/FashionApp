@@ -18,10 +18,22 @@
                     <input type="submit" class="btn btn-danger" value="Delete">
                 </form>
             </div>
-            <div class="row">
+            <hr>
+            <% fashions.comments.forEach(function(comment){ %>
+                <div class="row">
+                    <div class="col-md-12">
+                        <strong><%= comment.username %></strong>
+                        <span class="float-right">10 days ago</span>
+                        <p>
+                            <%= comment.text %> 
+                        </p>
+                    </div>
+                </div>
+            <% }) %>
+            <!-- <div class="row">
                 <% fashions.comments.forEach((comment) => { %>
-                    <p><%= comment.text%></p>
-                <% }); %>
+                    <strong><%= comment.username %></strong> - <%= comment.text %>
+                <% }); %> -->
             </div>
         </div>
     </div>
